@@ -1,23 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
-
+import {Navigate,Route,Routes} from "react-router-dom"
+import { Header } from './components/Header';
+import NotesListPage from './pages/NotesListPage';
+import { NotePage } from './pages/NotePage';
+import HomePage from './pages/HomePage';
+//const body = {part:"This is a part"}
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header/>
+      <div className="container dark">
+
+        
+        <Routes>
+          <Route path="/" element={<HomePage/>}/>
+          {/* <Route path="/" element={<Navigate to= "/notes"/>} /> */}
+          <Route path="/notes" element={<NotesListPage/>}/>
+          <Route path="/notes/:id" element={<NotePage/>}/>
+        </Routes>
+      </div>
+      
     </div>
   );
 }
